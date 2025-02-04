@@ -28,7 +28,13 @@ class ProductService(private val productRepository: ProductRepository) {
         return productRepository.findById(id).orElseThrow { RuntimeException("Product not found") };
     }
 
-    fun findByName(productName: String): List<Product> {
-        return productRepository.queryByName(productName);
+    fun findByName(name: String): List<Product> {
+        val result = productRepository.queryByName(name);
+
+        return result;
+    }
+
+    fun productsCount(): Long {
+        return productRepository.count();
     }
 }
