@@ -47,6 +47,23 @@ class ProductController(private val service: ProductService) {
         return ResponseEntity.ok(updatedProduct);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deleteById(@PathVariable id: Long) {
+        service.deleteById(id);
+    }
+
+    @GetMapping("/search")
+    fun findByName(@RequestParam name: String): List<Product>? {
+        return service.findByName(name).orEmpty();
+    }
+
+    @GetMapping("/count")
+    fun productsCount(): Map<String, Long> {
+        val total = service.productsCount();
+        return mapOf("totalProducts" to total);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException::class)
     fun handleValidationExceptions(exception: MethodArgumentNotValidException): ResponseEntity<ErrorResponse> {
         val errors = exception.bindingResult.allErrors.map { it as FieldError }
