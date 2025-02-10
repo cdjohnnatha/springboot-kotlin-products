@@ -11,6 +11,7 @@ DStore products is API service to products management.
   - 0.1. [Tecnologies](#tecnologies)
 - 1. [Application Files](#application_files)
 - 2. [Contributors](#contributors)
+- 3. [Next Steps](#next_steps)
 
 ## 0. <a name='introduction'></a>Introduction
 
